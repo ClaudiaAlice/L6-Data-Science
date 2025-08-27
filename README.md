@@ -46,14 +46,16 @@
 Marine toxins may increase with the effects of climate change (Meng et al., 2024). This analysis will investigate the concentration of deadly toxin producing phytoplankton within seven shellfish farms around Northern Ireland over time using data from the Food Standards Agency. Multiple csv’s have been extracted and appended to produce a timeseries between 2022-2025. Python libraries Pandas, Numpy and Matplotlib have been used to cleanse, transform and analyse the raw incomplete data. Statistical techniques such as data normalisation and timeseries forecasting reveal skewed data towards DSP algae and a strong seasonal trend. The SARIMA model developed accounts for seasonality and stationarity through differencing and hyper-parameter optimisation.
 Six csv exports of years 2020-2025 have been taken from the Food Standards Agency depicting toxic phytoplankton concentrations within Northern Ireland fisheries (Northern Ireland Phytoplankton Results). Each export contains 9 columns and between 171-386 rows with 2025 being half year.
 
-Below is detail of the Python script written to understand the questions >How are toxic algal species distributed throughout Northern Ireland Fisheries and how are Northern Ireland Algal concentrations predicted to change over time?< 
+Below is detail of the Python script written to understand the questions:
+  - <! --How are toxic algal species distributed throughout Northern Ireland Fisheries? -->
+  - <! --How are Northern Ireland Algal concentrations predicted to change over time? -->
 
 ## Import
 Python libraries Pandas within VS Code was used to import the 6 csv files and convert to a data frame. Python was used due to the enhanced capability for modelling with accepted packages and the focus of data analysis in this project over a tool such as Power BI which is focused towards visuals. The head of 2025 was viewed to ensure workability and initial data quality audit. This revealed 2025 data included 2024 sampling dates. To ensure data was representative of the year period and dates outside of the year period were filtered.
 
 ### **Import Packages**
 Import relevant packages for analysis of Algal Concentration
-```
+```Python
   ## Import relevant packages
   import pandas as pd
   from pandas.plotting import autocorrelation_plot
