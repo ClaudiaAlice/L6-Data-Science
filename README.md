@@ -2,9 +2,9 @@
 ### Key Skills: Power Platform, Python, SQL, R
 
 ## Education
-### Apprenticeship: L4 Data Analyst, Distinction 
-### *MSC (Hons): Ocean Science, University of Liverpool, 1st Class
-### *BSC (Hons): Oceanography, University of Liverpool, 1st Class
+### * Apprenticeship: L4 Data Analyst, Distinction 
+### * MSC (Hons): Ocean Science, University of Liverpool, 1st Class
+### * BSC (Hons): Oceanography, University of Liverpool, 1st Class
 
 ## Work Experience
 ### Advanced Analytics Analyst: Financial Institute
