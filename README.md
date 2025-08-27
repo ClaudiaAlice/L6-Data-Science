@@ -1,5 +1,16 @@
-# First Github Project for L6 Data Science Apprenticeship
-## Food Standards Agency - Northern Ireland Phytoplankton Analysis
-### A review of Algal concentrations within fisheries around Norther Ireland. 
-*Data from Food Standards Agency - https://data.food.gov.uk/catalog*
+# BI Analyst and Data Scientist
+### Key Skills: Power Platform, Python, SQL, R
 
+## Education
+### Apprenticeship: L4 Data Analyst, Distinction 
+### *MSC (Hons): Ocean Science, University of Liverpool, 1st Class
+### *BSC (Hons): Oceanography, University of Liverpool, 1st Class
+
+## Work Experience
+### Advanced Analytics Analyst: Financial Institute
+### Data Analyst: Financial Institute
+### Data Analyst: Medical Company
+### Lab Supervisor: Medical Company
+
+# Projects on Github:
+### Northern Ireland Phytoplankton Analysis
