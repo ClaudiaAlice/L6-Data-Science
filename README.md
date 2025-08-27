@@ -33,7 +33,7 @@
   - [3f. Timeseries Plot and Outlier Removal](#Timeseries-Plot-and-Outlier-Removal)
   - [3g. Data Transformation for Timeseries Forecasting](#Data-Transformation-for-Timeseries-Forecasting)
 - [4. Timeseries Forecasting](#Timeseries-Forecasting)
-  - [4a. SARIMA: Stationarity Test](#SARIMA:-Stationarity-Test)
+  - [4a. SARIMA Stationarity Test](#SARIMA-Stationarity-Test)
   - [4b. Autocorreletation plots for p,d,q,P,D,Q,s determination](#Autocorreletation-plots-for-p,d,q,P,D,Q,s-determination)
   - [4c. Hyperparameter Optimisation](#Hyperparameter-Optimisation)
   - [4d. Best AIC Model](#Best-AIC-Model)
@@ -478,7 +478,7 @@ print(dfmeanall.head())
 ## Timeseries Forecasting
 A SARIMA timeseries forecast will be used as the predictive method with the hyperparameters (p,d,q)x(P,D,Q)s. A SARIMA forecast has been chosen over more complex machine learning algorithms such as XGBoost as the data is univariate, with a clear seasonal pattern and doesn’t require multi-variate or complex training 
 
-### **SARIMA: Stationarity Test**
+### **SARIMA Stationarity Test**
 First step in applying a successful SARIMA forecast is checking the data for stationarity which is represented by Integrated part of ARIMA defined by the d hyperparameter. This was achieved through use of a dickey fuller test, the outputs of which revealed a p-value > 0.05 threshold indicating the algal concentration over time is already stationary. A rolling mean and standard deviation were also plotted to help visualise this stationarity which also showed little variation over time,. The optimum d and D hyperparameter will likely be 0 as no differencing is required.
 ```
 # ADF test to test stationarity
