@@ -73,7 +73,7 @@ Import relevant packages for analysis of Algal Concentration
 ```
 ### **Connect to Github stored data files**
 Import relevant packages for analysis of Algal Concentration
-```
+```Python
 # Connect to Github repository for NI Phytoplankton Data 2020-2025
 phytodf2025 = pd.read_csv('https://raw.githubusercontent.com/ClaudiaAlice/L6-Data-Science/refs/heads/main/2025_NIPhytoplanktonData.csv')
 phytodf2024 = pd.read_csv('https://raw.githubusercontent.com/ClaudiaAlice/L6-Data-Science/refs/heads/main/2024_NIPhytoplanktonData.csv')
@@ -89,7 +89,7 @@ phytodf2025.head()
 ### **Append each timeseries file**
 
 Ensure each export relates only to relevant date, ie 2025 export only contains 2025 data.
-```
+```Python
 # Before appending each data frame the representative data must be correct, i.e. 2024 survey only contains 2024 results
 # 2025
 phytodf2025['DateOfSampling'] = pd.to_datetime(phytodf2025['DateOfSampling'])#, format='%d/%m/%Y', dayfirst=True)
@@ -137,7 +137,7 @@ print(phytodf2025['Snapshot Date'].describe)
 Exploratory analysis of the single data frame was conducted revealing mixtures of data types, inconsistent labelling and null handling, skewed sampling site frequencies and redundant columns. Panda functions .describe and .info could not be implemented here due to lack of data types and inconsistent data.
 
 ### **Exploratory Analysis**
-```
+```Python
 print('Data frame size:\n', phytodf.size,
       '\n\nColumn Data Types:\n',phytodf.dtypes,
       '\n\n',phytodf['Lough'].value_counts(),
@@ -154,7 +154,7 @@ First step in cleaning the data consisted of removing blank rows, removing unnec
 Labelling and null indicators is not consistent within the data frame. This may be due to multiple years being appended or different data inputters. This creates columns that are mixes of data types, e.g. DSPAlgae containing 112 and No harmful species and also makes filtering difficult. Trimming all strings and replacing values has been used to convert the Algae column text to 0 indicating no species observed, figure 6a. Data types have been assigned to allow for use of REGEX expression when converting all variations of Open in Status column allowing for filtering to open fisheries
 
 Creation of a month/year column to allow for simpler timeseries analysis.
-```
+```Python
 # Remove blank rows
 phytodf.dropna(how='all')
 
@@ -225,7 +225,7 @@ phytodf.info()
 ```
 ### **Group and Label Data**
 Data was labelled using dictionaries and functions to allow for simplified grouping by location and species by mean when plotting visuals.
-```
+```Python
 # Sum all aglae as a new column
 phytodf['All Algae'] = phytodf['PSP Algae'] + phytodf['ASP Algae'] + phytodf['DSP Algae'] 
 
@@ -282,7 +282,7 @@ for location in dataframes.keys():
 To determine the distribution of the data within each location the algal concentrations were then normalised and plotted as a percentage. This revealed DSP species consistently account for over 90% of algal concentrations within all areas.
 
 Further analysis of distribution of algal concentrations and location using mean and standard deviation reveals highly distributed data at Belfast, Dundrum Bay and Lough Foyle. The standard deviation at Lough Foyle is very large indicating potential presence of anomalies
-```
+```Python
 #Plotting mean and standard deviation of Algae by Location and Algal type
 xlabels = phytodf['Location'].unique()
 yall = phytodf.groupby('Location')['All Algae'].mean()
@@ -386,7 +386,7 @@ plt.show()
 Plotting the sum of algal species concentration by location over time reveals these anomalies, for example the Larne Foyle high distribution is likely caused by the peak in spring 2021 at ~500000. The previous three-month average has been used to impute this Larne Foyle anomaly.
 
 Imputation has been used to replace values above the 99th percentile with the 99th percentile to remove outliers. This allows for removal of extreme values whilst maintaining some stochasticity.
-```
+```Python
 # Sort by Date_MY
 phytodf = phytodf.sort_values(by='Date_MY')
 
@@ -440,7 +440,7 @@ plt.show()
 The result demonstrates similar seasonal behaviour for all locations with algal concentrations highest in summer months and lowest in winter. Therefore, location will be disregarding during the timeseries forecasting with the data grouped by mean of each month.  This removes any further anomalies and allows for prediction of algal concentrations around Ireland regardless of species or specific fishery.
 
 Timeseries forecasting will be used to predict algal concentrations over the next 12 months.
-```
+```Python
 # Plot Mean Algal Concentration by Location and Date
 locations = phytodf['Location'].unique()
 print(locations)
@@ -482,7 +482,7 @@ A SARIMA timeseries forecast will be used as the predictive method with the hype
 
 ### **SARIMA Stationarity Test**
 First step in applying a successful SARIMA forecast is checking the data for stationarity which is represented by Integrated part of ARIMA defined by the d hyperparameter. This was achieved through use of a dickey fuller test, the outputs of which revealed a p-value > 0.05 threshold indicating the algal concentration over time is already stationary. A rolling mean and standard deviation were also plotted to help visualise this stationarity which also showed little variation over time,. The optimum d and D hyperparameter will likely be 0 as no differencing is required.
-```
+```Python
 # ADF test to test stationarity
 dftest = adfuller(dfmeanall.algaemean, autolag = 'AIC')
 print("1. ADF : ",dftest[0])
@@ -507,7 +507,7 @@ plt.show()
 
 ### **Autocorreletation plots for p,d,q,P,D,Q,s determination**
 Next, the autocorrelation (ACF) and partial-autocorrelation (PACF) where plotted to help determine the p,d,q,s values of the SARIMA. The ACF relates to the moving average p hyperparameter. The ACF plots reveals a significant spike at 1 and a potential seasonal component of 12-13 based on lags, indicating q-value may be 1, with seasonal s-value of 12-13. The PACF relates to the autoregressive p hyperparameter. The PACF plot reveals outliers at 1 with no significant lags indicating p-value may be 1.
-```
+```Python
 # Autocorrelation plot
 autocorrelation_plot(dfmeanall)
 plt.title('Autocorrelation')
@@ -532,7 +532,7 @@ Manual review of ADF, ACF and PACF result in a probable SARIMA model of (1, 0, 0
 
 ### **Hyperparameter Optimisation**
 To further determine the best values for the hyperparameters grid search has been used for hyper-parameter optimisation. This assesses all hyper-parameter combinations over a given range and returns the optimised combination based on three outputs; mean-squared error, mean-absolute error, Akaike Information Criterion (AIC). Mean-absolute error and mean-squared error measure the average difference and average of squares between predicted and actuals as an indication of prediction accuracy. AIC measures how effectively the model applied fits the actuals with low AIC being a better fit.
-```
+```Python
 # Create class for testing each hyperparameter combinations against evaluators
 class SARIMAgridsearch:
     def __init__(testing, data, p_values, d_values, q_values, P_values, D_values, Q_values, s_values): # initialise the class
@@ -619,7 +619,7 @@ best_order, best_seasonal_order = sarima_search.grid_search()
 MAE and MSE result in the same SARIMA model. The AIC and MAE/MSE optimised SARIMA models and the model assumed from manual ACF/PACF review were each plotted to forecast algal concentrations over the next 12 months with residuals and results.
 
 ### **Best AIC Model**
-```
+```Python
 # Plot AIC model
 model = SARIMAX(dfmeanall, order=(0, 1, 1), seasonal_order=(0, 1, 2, 12)) 
 results = model.fit()
@@ -668,7 +668,7 @@ print(f'MSE: {mse}')
 ```
 
 ### **Best MAE Model**
-```
+```Python
 # Plot MAE model 
 model = SARIMAX(dfmeanall, order=(0, 0, 0), seasonal_order=(0, 1, 0, 12))
 results = model.fit()
@@ -717,7 +717,7 @@ print(f'MSE: {mse}')
 ```
 
 ### **Best MSE Model**
-```
+```Python
 # Plot MSE model
 model = SARIMAX(dfmeanall, order=(0, 0, 0), seasonal_order=(0, 1, 0, 12))
 results = model.fit()
@@ -765,7 +765,7 @@ print(f'MAE: {mae}')
 print(f'MSE: {mse}')
 ```
 ### **Best Manual Model**
-```
+```Python
 # Plot Manual model
 model = SARIMAX(dfmeanall, order=(1, 0, 0), seasonal_order=(0, 1, 1, 12))
 results = model.fit()
