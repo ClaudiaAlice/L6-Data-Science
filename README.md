@@ -13,7 +13,7 @@
 - Lab Supervisor: Medical Company
 
 ## Projects on Github:
-- Northern Ireland Phytoplankton Analysis
+- Northern Ireland Phytoplankton Analysis in Python
 
 # Northern Ireland Phytoplankton Analysis
 *Analysis of the Algal Concentrations over time from fisheries around Northern Ireland*
