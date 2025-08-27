@@ -1,4 +1,5 @@
 title: Claudia A
 logo: /assets/image.jpg
 description: Exploring the world of data
+#show_downloads: true
 theme: jekyll-theme-minimal
