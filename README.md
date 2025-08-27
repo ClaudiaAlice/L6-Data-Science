@@ -40,7 +40,7 @@
   - [4e. Best MAE Model](#best-mae-model)
   - [4f. Best MSE Model](#best-mse-model)
   - [4g. Best Manual Model](#best-manual-model)
-- [Overview](#overview)
+- [5. Overview](#overview)
 
 ### **Introduction**
 Marine toxins may increase with the effects of climate change (Meng et al., 2024). This analysis will investigate the concentration of deadly toxin producing phytoplankton within seven shellfish farms around Northern Ireland over time using data from the Food Standards Agency. Multiple csv’s have been extracted and appended to produce a timeseries between 2022-2025. Python libraries Pandas, Numpy and Matplotlib have been used to cleanse, transform and analyse the raw incomplete data. Statistical techniques such as data normalisation and timeseries forecasting reveal skewed data towards DSP algae and a strong seasonal trend. The SARIMA model developed accounts for seasonality and stationarity through differencing and hyper-parameter optimisation.
