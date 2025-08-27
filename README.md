@@ -17,4 +17,4 @@
 
 # Northern Ireland Phytoplankton Analysis
 *Analysis of the Algal Concentrations over time from fisheries around Northern Ireland*
-### Built within Jupyter Notebooks using Python 3.13.7
+*Built within Jupyter Notebooks using Python 3.13.7*
