@@ -47,8 +47,8 @@ Marine toxins may increase with the effects of climate change (Meng et al., 2024
 Six csv exports of years 2020-2025 have been taken from the Food Standards Agency depicting toxic phytoplankton concentrations within Northern Ireland fisheries (Northern Ireland Phytoplankton Results). Each export contains 9 columns and between 171-386 rows with 2025 being half year.
 
 Below is detail of the Python script written to understand the questions:
-  - <! --How are toxic algal species distributed throughout Northern Ireland Fisheries? -->
-  - <! --How are Northern Ireland Algal concentrations predicted to change over time? -->
+  - *How are toxic algal species distributed throughout Northern Ireland Fisheries?*
+  - *How are Northern Ireland Algal concentrations predicted to change over time?*
 
 ## Import
 Python libraries Pandas within VS Code was used to import the 6 csv files and convert to a data frame. Python was used due to the enhanced capability for modelling with accepted packages and the focus of data analysis in this project over a tool such as Power BI which is focused towards visuals. The head of 2025 was viewed to ensure workability and initial data quality audit. This revealed 2025 data included 2024 sampling dates. To ensure data was representative of the year period and dates outside of the year period were filtered.
