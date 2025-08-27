@@ -18,12 +18,12 @@
 # Northern Ireland Phytoplankton Analysis
 *Analysis of the Algal Concentrations over time from fisheries around Northern Ireland*
 *Built within Jupyter Notebooks using Python 3.13.7*
-## Table of Contents
+## Script table of contents
 - [Import Packages](#Import-Packages)
 - [How to Customize Markdown files?](#how-to-customize-markdown-files)
 - [How to Create New Repository?](#how-to-create-new-repository)
 
-# Import Packages
+1. Import Packages
 ```
 ## Import relevant packages
 import pandas as pd
